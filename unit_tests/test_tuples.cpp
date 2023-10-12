@@ -43,3 +43,29 @@ SCENARIO("A tuple with w=0 is a vector")
         }
     }
 }
+
+SCENARIO("point() function creates a tuple with w=1")
+{
+    GIVEN("A point p with x,y,z")
+    {
+        std::tuple<double, double, double, double> p = tracer::factory::point(4, -4, 3);
+
+        THEN("p must equate the tuple (4, -4, 3, 1)")
+        {
+            REQUIRE(p == std::make_tuple(4, -4, 3, 1));
+        }
+    }
+}
+
+SCENARIO("vector() function creates a tuple with w=0")
+{
+    GIVEN("A point p with x,y,z")
+    {
+        std::tuple<double, double, double, double> p = tracer::factory::vector(4, -4, 3);
+
+        THEN("p must equate the tuple (4, -4, 3, 0)")
+        {
+            REQUIRE(p == std::make_tuple(4, -4, 3, 0));
+        }
+    }
+}
