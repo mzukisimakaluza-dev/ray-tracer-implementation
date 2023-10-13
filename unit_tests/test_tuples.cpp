@@ -69,3 +69,18 @@ SCENARIO("vector() function creates a tuple with w=0")
         }
     }
 }
+
+SCENARIO("Adding two tuples")
+{
+    GIVEN("a1 and a2")
+    {
+        std::tuple<double, double, double, double> a1(3, -2, 5, 1);
+        std::tuple<double, double, double, double> a2(-2, 3, 1, 0);
+
+        THEN("a1 + a2 must equate the sum of individual corresponding values")
+        {
+            auto sum = tracer::factory::add_tuples(a1, a2);
+            REQUIRE(sum == std::make_tuple(1, 1, 6, 1));
+        }
+    }
+}
